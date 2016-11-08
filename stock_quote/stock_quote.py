@@ -13,7 +13,7 @@ def main():
         if arguments[0] == "-h" or arguments[0] == "--help":
             help()
         elif arguments[0] == "--version":
-            print("version")
+            print("version 0.0")
         else:
             url = convert_url(arguments[0]) 
             data = conv_json(url)
@@ -33,6 +33,8 @@ def main():
                 print(max_52(ticker_data))
             elif arguments[1].upper() == "MIN52":
                 print(min_52(ticker_data))
+            else:
+                print("Invalid Argument/Ticker")
         else:
             print("Invalid Argument/Ticker")
     else:
@@ -61,13 +63,16 @@ def last_day(ticker_data):
     '''
 
 def help():
-    return "usage: stock_quote.py [-h] [--version] ticker", \
-        "stock_quote - A tool for generating code coverage reports.", \
-        "positional arguments:", \
-        "ticker      Stock ticker.", \
-        "optional arguments:", \
-        " -h, --help  show this help message and exit", \
-        "--version   show program's version number and exit"
+    print("usage: stock_quote.py [-h] [--version] ticker")
+    print("you may not enter 2 separate arguments together.\ni.e --help GOOG will return an error\n")
+    print("stock_quote - A tool for generating code coverage reports.\n")
+    print("positional arguments:")
+    print("ticker           Stock ticker.")
+    print("ticker max52     52 Week Max.")
+    print("ticker min52     52 Week Min.\ni.e: GOOG min52\n")
+    print("optional arguments:")
+    print(" -h, --help  show this help message and exit")
+    print("--version   show program's version number and exit")
 
 def max_52(ticker_data):
     max_val = -sys.maxsize
